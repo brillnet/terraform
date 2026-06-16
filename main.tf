@@ -28,8 +28,3 @@ module "dns" {
   aws_vpc_id = module.vpc.aws_vpc_id
   instance_one_private_ip = module.ec2.instance_one_private_ip
 }
-
-# You can access module outputs elsewhere in your root files:
-# output "storage_arn" {
-#   value = module.s3_storage.bucket_arn
-# }
