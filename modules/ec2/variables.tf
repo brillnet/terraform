@@ -1,14 +1,14 @@
-variable "subnet_1_id" {
+variable "public_east_1a_subnet_1_id" {
   type        = string
   description = "Subnet 1 id"
 }
 
-variable "subnet_2_id" {
+variable "private_east_1a_subnet_2_id" {
   type        = string
   description = "Subnet 2 id"
 }
 
-variable "subnet_3_id" {
+variable "private_east_1b_subnet_3_id" {
   type        = string
   description = "Subnet 3 id"
 }

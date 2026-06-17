@@ -17,9 +17,9 @@ module "ec2" {
   source = "./modules/ec2"
   depends_on = [module.iam_policies]
   ssm_profile_name = module.iam_policies.ssm_profile_name
-  subnet_1_id = module.vpc.subnet_1_id
-  subnet_2_id = module.vpc.subnet_2_id
-  subnet_3_id = module.vpc.subnet_3_id
+  public_east_1a_subnet_1_id = module.vpc.public_east-1a_subnet_1_id
+  private_east_1a_subnet_2_id = module.vpc.private-east-1a_subnet_2_id
+  private_east_1b_subnet_3_id = module.vpc.private-east-1b_subnet_3_id
 }
 
 module "dns" {
