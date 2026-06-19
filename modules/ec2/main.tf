@@ -4,6 +4,8 @@ resource "aws_instance" "private-server-one" {
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
   iam_instance_profile = var.ssm_profile_name
+  #  Adding user data script to install sample webserver
+  user_data = file("${path.module}/webserver.sh")
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
   # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
 
@@ -21,6 +23,7 @@ resource "aws_instance" "private-server-two" {
   instance_type = "t2.micro"
   availability_zone = "us-east-1b"
   iam_instance_profile = var.ssm_profile_name
+  user_data = file("${path.module}/webserver.sh")
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
   # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
 

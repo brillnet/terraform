@@ -14,9 +14,6 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.prod-vpc.id
 }
 
-
-#  Setting up security groups.
-
 #  Needed for all outbound connectivity
 resource "aws_security_group" "outbound" {
   name        = "outbound-sg"
@@ -83,6 +80,26 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
   ip_protocol       = "tcp"
   to_port           = 22
 }
+
+resource "aws_security_group" "allow_web" {
+  name        = "allow_web traffic"
+  description = "Allow web inbound traffic"
+  vpc_id      = aws_vpc.prod-vpc.id
+
+  tags = {
+    Name = "allow_web"
+  }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_web_ipv4" {
+  security_group_id = aws_security_group.allow_web.id
+  cidr_ipv4         = "0.0.0.0/0"
+  # cidr_ipv4         = "18.206.107.24/29"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
 
 resource "aws_security_group" "efs_sg" {
   name   = "efs-server-sg"
