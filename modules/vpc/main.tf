@@ -98,7 +98,7 @@ resource "aws_security_group" "efs_sg" {
 }
 
 #  Creating route table for prod us-east-1a
-resource "aws_route_table" "prod-route-table-public-east-1a" {
+resource "aws_route_table" "prod-route-table-public-east-1" {
   vpc_id = aws_vpc.prod-vpc.id
 
   route {
@@ -107,7 +107,7 @@ resource "aws_route_table" "prod-route-table-public-east-1a" {
   }
 
   tags = {
-    Name = "Public Route Table - east-1a"
+    Name = "Public Route Table - east-1"
   }
 }
 
@@ -130,6 +130,17 @@ resource "aws_subnet" "public-east-1a-subnet-1" {
   }
 }
 
+#  Create public subnet in us-east-1b
+resource "aws_subnet" "public-east-1b-subnet-2" {
+  vpc_id = aws_vpc.prod-vpc.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
+
+  tags = {
+    Name = "Public Subnet AZ B"
+  }
+}
+
 #  Creating NAT GW. This will be used in the private subnet
 #  routing table.
 resource "aws_nat_gateway" "nat_gw_for_private" {
@@ -146,24 +157,24 @@ resource "aws_nat_gateway" "nat_gw_for_private" {
 
 
 #  Creating private subnet in us-east-1a
-resource "aws_subnet" "private-east-1a-subnet-2" {
+resource "aws_subnet" "private-east-1a-subnet-3" {
   vpc_id = aws_vpc.prod-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = "10.0.3.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "Private Subnet 2 AZ A"
+    Name = "Private Subnet 3 AZ A"
   }
 }
 
 #  Creating private subnet in us-east-1b
-resource "aws_subnet" "private-east-1b-subnet-3" {
+resource "aws_subnet" "private-east-1b-subnet-4" {
   vpc_id = aws_vpc.prod-vpc.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = "10.0.4.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "Private Subnet 3 AZ B"
+    Name = "Private Subnet 4 AZ B"
   }
 }
 
@@ -183,19 +194,25 @@ resource "aws_route_table" "private-route-table" {
 }
 
 #  Associating public subnet in us-east-1a with route table.
-resource "aws_route_table_association" "a" {
+resource "aws_route_table_association" "public_assoc_one" {
   subnet_id = aws_subnet.public-east-1a-subnet-1.id
-  route_table_id = aws_route_table.prod-route-table-public-east-1a.id
+  route_table_id = aws_route_table.prod-route-table-public-east-1.id
+}
+
+#  Associating public subnet in us-east-1b with route table.
+resource "aws_route_table_association" "public_assoc_two" {
+  subnet_id = aws_subnet.public-east-1b-subnet-2.id
+  route_table_id = aws_route_table.prod-route-table-public-east-1.id
 }
 
 #  Associating private subnet in us-east-1a with route table.
 resource "aws_route_table_association" "private_assoc" {
-  subnet_id = aws_subnet.private-east-1a-subnet-2.id
+  subnet_id = aws_subnet.private-east-1a-subnet-3.id
   route_table_id = aws_route_table.private-route-table.id
 }
 
 #  Associating private subnet in us-east-1b with route table.
 resource "aws_route_table_association" "private_assoc_two" {
-  subnet_id = aws_subnet.private-east-1b-subnet-3.id
+  subnet_id = aws_subnet.private-east-1b-subnet-4.id
   route_table_id = aws_route_table.private-route-table.id
 }

@@ -8,7 +8,7 @@ resource "aws_instance" "private-server-one" {
   # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
 
   # Attaching instance to a specific subnet_2
-  subnet_id = var.private_east_1a_subnet_2_id
+  subnet_id = var.private_east_1a_subnet_3_id
 
   tags = {
     Name = "vm_instance_two"
@@ -25,7 +25,7 @@ resource "aws_instance" "private-server-two" {
   # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
 
   # Attaching instance to a specific subnet_3
-  subnet_id = var.private_east_1b_subnet_3_id
+  subnet_id = var.private_east_1b_subnet_4_id
 
   tags = {
     Name = "vm_instance_three"

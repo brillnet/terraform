@@ -3,14 +3,14 @@ output "public_east-1a_subnet_1_id" {
   value       = module.vpc.public_east-1a_subnet_1_id
 }
 
-output "private-east-1a-subnet_2_id" {
-  description = "private-east-1a-subnet-2 ID"
-  value       = module.vpc.private-east-1a_subnet_2_id
+output "private-east-1a-subnet_3_id" {
+  description = "private-east-1a-subnet-3 ID"
+  value       = module.vpc.private-east-1a_subnet_3_id
 }
 
-output "private-east-1b_subnet_3_id" {
-  description = "Subnet 3 ID"
-  value       = module.vpc.private-east-1b_subnet_3_id
+output "private-east-1b_subnet_4_id" {
+  description = "Subnet 4 ID"
+  value       = module.vpc.private-east-1b_subnet_4_id
 }
 
 output "private-server-one-id" {
