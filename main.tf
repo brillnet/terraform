@@ -16,15 +16,16 @@ module "iam_policies" {
 module "ec2" {
   source = "./modules/ec2"
   depends_on = [module.iam_policies]
+  aws_security_group_allow_web_id = module.vpc.aws_security_group_allow_web_id
   ssm_profile_name = module.iam_policies.ssm_profile_name
   public_east_1a_subnet_1_id = module.vpc.public_east-1a_subnet_1_id
-  private_east_1a_subnet_2_id = module.vpc.private-east-1a_subnet_2_id
-  private_east_1b_subnet_3_id = module.vpc.private-east-1b_subnet_3_id
+  private_east_1a_subnet_3_id = module.vpc.private-east-1a_subnet_3_id
+  private_east_1b_subnet_4_id = module.vpc.private-east-1b_subnet_4_id
 }
 
-module "dns" {
-  source = "./modules/dns"
-  depends_on = [module.iam_policies,module.ec2]
-  aws_vpc_id = module.vpc.aws_vpc_id
-  instance_one_private_ip = module.ec2.instance_one_private_ip
-}
+# module "dns" {
+#   source = "./modules/dns"
+#   depends_on = [module.iam_policies,module.ec2]
+#   aws_vpc_id = module.vpc.aws_vpc_id
+#   instance_one_private_ip = module.ec2.instance_one_private_ip
+# }

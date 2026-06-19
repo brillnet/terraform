@@ -4,11 +4,12 @@ resource "aws_instance" "private-server-one" {
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
   iam_instance_profile = var.ssm_profile_name
-  # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
-  # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
+  #  Adding user data script to install sample webserver
+  user_data = file("${path.module}/webserver.sh")
+  vpc_security_group_ids = [var.aws_security_group_allow_web_id]
 
   # Attaching instance to a specific subnet_2
-  subnet_id = var.private_east_1a_subnet_2_id
+  subnet_id = var.private_east_1a_subnet_3_id
 
   tags = {
     Name = "vm_instance_two"
@@ -21,11 +22,11 @@ resource "aws_instance" "private-server-two" {
   instance_type = "t2.micro"
   availability_zone = "us-east-1b"
   iam_instance_profile = var.ssm_profile_name
-  # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
-  # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
+  user_data = file("${path.module}/webserver.sh")
+  vpc_security_group_ids = [var.aws_security_group_allow_web_id]
 
   # Attaching instance to a specific subnet_3
-  subnet_id = var.private_east_1b_subnet_3_id
+  subnet_id = var.private_east_1b_subnet_4_id
 
   tags = {
     Name = "vm_instance_three"
