@@ -86,7 +86,7 @@ resource "aws_security_group" "allow_web" {
   vpc_id      = aws_vpc.prod-vpc.id
 
   tags = {
-    Name = "allow_web"
+    Name = "allow_web_traffic_inbound"
   }
 }
 
