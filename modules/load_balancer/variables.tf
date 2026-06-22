@@ -22,3 +22,4 @@ variable "private_server_two_id" {
   type = string
   description = "ec2 instance_two id"
 }
+

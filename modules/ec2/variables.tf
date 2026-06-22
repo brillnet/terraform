@@ -37,3 +37,4 @@ variable "aws_security_group_allow_icmp_id" {
   type        = string
   description = "Allow ICMP outbound"
 }
+

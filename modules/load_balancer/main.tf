@@ -43,3 +43,4 @@ resource "aws_lb" "webserver_lb" {
   security_groups    = [var.security_groups]
   subnets            = var.public_subnet_ids # Requires 2+ subnets in different AZs
 }
+
