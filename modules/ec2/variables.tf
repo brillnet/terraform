@@ -17,3 +17,24 @@ variable "ssm_profile_name" {
   type        = string
   description = "ssm profile name"
 }
+
+variable "aws_security_group_allow_web_id" {
+  type        = string
+  description = "aws security group allow web"
+}
+
+variable "aws_security_group_allow_ssm_id" {
+  type        = string
+  description = "aws security group allow ssm"
+}
+
+variable "aws_security_group_allow_outbound_id" {
+  type        = string
+  description = "Outbound access"
+}
+
+variable "aws_security_group_allow_icmp_id" {
+  type        = string
+  description = "Allow ICMP outbound"
+}
+

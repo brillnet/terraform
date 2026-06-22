@@ -15,3 +15,4 @@ output "instance_id_two" {
   description = "The ID of the private EC2 instance1 in AZ 1b"
   value       = aws_instance.private-server-two.id
 }
+
