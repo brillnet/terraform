@@ -26,8 +26,14 @@ module "ec2" {
   private_east_1b_subnet_4_id = module.vpc.private-east-1b_subnet_4_id
 }
 
-  # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
-  # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
+module "load_balancer" {
+  source = "./modules/load_balancer"
+  depends_on = [module.ec2]
+  aws_vpc_id = module.vpc.aws_vpc_id
+  private_server_one_id = module.ec2.instance_id_one
+  private_server_two_id = module.ec2.instance_id_two
+}
+
 
 # module "dns" {
 #   source = "./modules/dns"
