@@ -8,6 +8,7 @@ resource "aws_instance" "private-server-one" {
   user_data = file("${path.module}/webserver.sh")
   vpc_security_group_ids = [var.aws_security_group_allow_web_id,
   var.aws_security_group_allow_outbound_id,
+  var.aws_security_group_allow_ssm_id,
   var.aws_security_group_allow_icmp_id]
 
   # Attaching instance to a specific subnet_2
@@ -27,6 +28,7 @@ resource "aws_instance" "private-server-two" {
   user_data = file("${path.module}/webserver.sh")
   vpc_security_group_ids = [var.aws_security_group_allow_web_id,
   var.aws_security_group_allow_outbound_id,
+  var.aws_security_group_allow_ssm_id,
   var.aws_security_group_allow_icmp_id]
 
   # Attaching instance to a specific subnet_3

@@ -19,6 +19,7 @@ module "ec2" {
   aws_security_group_allow_web_id = module.vpc.aws_security_group_allow_web_id
   aws_security_group_allow_icmp_id = module.vpc.aws_security_group_allow_icmp_id
   aws_security_group_allow_outbound_id = module.vpc.aws_security_group_allow_outbound_id
+  aws_security_group_allow_ssm_id = module.vpc.aws_security_group_allow_ssm_id
   ssm_profile_name = module.iam_policies.ssm_profile_name
   public_east_1a_subnet_1_id = module.vpc.public_east-1a_subnet_1_id
   private_east_1a_subnet_3_id = module.vpc.private-east-1a_subnet_3_id

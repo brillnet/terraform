@@ -23,6 +23,11 @@ variable "aws_security_group_allow_web_id" {
   description = "aws security group allow web"
 }
 
+variable "aws_security_group_allow_ssm_id" {
+  type        = string
+  description = "aws security group allow ssm"
+}
+
 variable "aws_security_group_allow_outbound_id" {
   type        = string
   description = "Outbound access"

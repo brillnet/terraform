@@ -8,6 +8,21 @@ output "aws_security_group_allow_web_id" {
   value       = aws_security_group.allow_web.id
 }
 
+output "aws_security_group_allow_outbound_id" {
+  description = "Outbound access"
+  value       = aws_security_group.outbound.id
+}
+
+output "aws_security_group_allow_icmp_id" {
+  description = "Allow ICMP outbound"
+  value       = aws_security_group.allow_icmp.id
+}
+
+output "aws_security_group_allow_ssm_id" {
+  description = "Allow SSM inbound"
+  value       = aws_security_group.allow_ssm.id
+}
+
 output "public_east-1a_subnet_1_id" {
   description = "public-east-1a-subnet-1 ID"
   value       = aws_subnet.public-east-1a-subnet-1.id

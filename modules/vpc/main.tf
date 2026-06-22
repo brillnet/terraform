@@ -49,8 +49,8 @@ resource "aws_security_group" "allow_icmp" {
 }
 
 #  Needed for SSM
-resource "aws_security_group" "ssm" {
-  name        = "ssm-sg"
+resource "aws_security_group" "allow_ssm" {
+  name        = "allow-ssm-sg"
   description = "Security group with outbound HTTPS"
   vpc_id      = aws_vpc.prod-vpc.id
 
