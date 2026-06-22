@@ -17,11 +17,16 @@ module "ec2" {
   source = "./modules/ec2"
   depends_on = [module.iam_policies]
   aws_security_group_allow_web_id = module.vpc.aws_security_group_allow_web_id
+  aws_security_group_allow_icmp_id = module.vpc.aws_security_group_allow_icmp_id
+  aws_security_group_allow_outbound_id = module.vpc.aws_security_group_allow_outbound_id
   ssm_profile_name = module.iam_policies.ssm_profile_name
   public_east_1a_subnet_1_id = module.vpc.public_east-1a_subnet_1_id
   private_east_1a_subnet_3_id = module.vpc.private-east-1a_subnet_3_id
   private_east_1b_subnet_4_id = module.vpc.private-east-1b_subnet_4_id
 }
+
+  # vpc_security_group_ids = [aws_security_group.allow_ssh.id,
+  # aws_security_group.outbound.id,aws_security_group.allow_icmp.id]
 
 # module "dns" {
 #   source = "./modules/dns"
