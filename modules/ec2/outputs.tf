@@ -4,6 +4,12 @@ output "instance_id_one" {
   value       = aws_instance.private-server-one.id
 }
 
+#  Outputting Public subnet two
+# output "instance_one_private_ip" {
+#   description = "Public Subnet Two"
+#   value       = aws_instance.private-server-one.private_ip
+# }
+
 #  Outputting Private IP address of instance one
 output "instance_one_private_ip" {
   description = "The private IP address of the EC2 instance one."
