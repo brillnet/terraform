@@ -3,6 +3,11 @@ variable "public_east_1a_subnet_1_id" {
   description = "Subnet 1 id"
 }
 
+variable "public_east_1b_subnet_2_id" {
+  type        = string
+  description = "Subnet 2 id"
+}
+
 variable "private_east_1a_subnet_3_id" {
   type        = string
   description = "Subnet 2 id"

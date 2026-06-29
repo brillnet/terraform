@@ -29,7 +29,7 @@ output "public_east-1a_subnet_1_id" {
 }
 
 output "public_east-1b_subnet_2_id" {
-  description = "public-east-1b-subnet-2 ID"
+  description = "public_east_1b_subnet_2 ID"
   value       = aws_subnet.public-east-1b-subnet-2.id
 }
 
@@ -40,5 +40,10 @@ output "private-east-1a_subnet_3_id" {
 
 output "private-east-1b_subnet_4_id" {
   description = "Private - Subnet 4 AZ-1b ID"
+  value       = aws_subnet.private-east-1b-subnet-4.id
+}
+
+output "public_subnets" {
+  description = "Public Subnets in us-east"
   value       = aws_subnet.private-east-1b-subnet-4.id
 }

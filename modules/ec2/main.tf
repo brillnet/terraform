@@ -11,8 +11,9 @@ resource "aws_instance" "private-server-one" {
   var.aws_security_group_allow_ssm_id,
   var.aws_security_group_allow_icmp_id]
 
-  # Attaching instance to a specific subnet_2
+  # Attaching instance to private subnet 3
   subnet_id = var.private_east_1a_subnet_3_id
+  
 
   tags = {
     Name = "vm_instance_two"
@@ -31,7 +32,7 @@ resource "aws_instance" "private-server-two" {
   var.aws_security_group_allow_ssm_id,
   var.aws_security_group_allow_icmp_id]
 
-  # Attaching instance to a specific subnet_3
+  # Attaching instance to private subnet 4
   subnet_id = var.private_east_1b_subnet_4_id
 
   tags = {
